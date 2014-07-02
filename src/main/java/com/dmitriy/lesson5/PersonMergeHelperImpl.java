@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * Created by dmitriy on 7/1/14.
  */
-public class PersonMergeHelperImpl implements PersonMargeHelper {
+public class PersonMergeHelperImpl implements PersonMergeHelper {
 
     @Override
     public Person[] merge(Person[] firstArray, Person[] secondArray) {
