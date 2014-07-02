@@ -17,18 +17,42 @@ public class PersonMergeHelperImpl implements PersonMargeHelper {
             resultArray[i] = secondArray[i-firstArray.length];
         }
 
-        try {
-            Arrays.sort(resultArray);
-        } catch (ClassCastException e){
-            e.printStackTrace();
-        }
+            Arrays.sort(resultArray, Person.PersonComparator);
 
-        for (int k = 0; k < resultArray.length-1; k++) {  //TODO - fix dups
-            if (resultArray[k].equals(resultArray[k + 1])) {
-                resultArray[k] = null;
+
+        setDuplicatesInArrayToNull(resultArray);
+
+        int resultArrayLength = resultArray.length - countNullInArray(resultArray);
+        Person [] rezArray = new Person[resultArrayLength];
+
+        for (int d = 0; d < resultArray.length; d++){ //TODO
+            if (resultArray[d] != null) {
+                    rezArray[d] = resultArray[d];
+
             }
         }
 
+        return rezArray;
+    }
+
+
+    private Person[] setDuplicatesInArrayToNull(Person[] resultArray) {
+        for (int k = 0; k < resultArray.length-1; k++) {
+                if (resultArray[k].equals(resultArray[k+1])) {
+                    resultArray[k] = null;
+                }
+        }
         return resultArray;
+    }
+
+
+    private int countNullInArray(Person[] resultArray) {
+        int nullCounter = 0;
+        for (int z = 0; z < resultArray.length; z++){
+            if (resultArray[z] == null){
+                nullCounter++;
+            }
+        }
+        return nullCounter;
     }
 }

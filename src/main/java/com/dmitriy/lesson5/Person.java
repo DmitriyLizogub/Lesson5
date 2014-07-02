@@ -1,6 +1,8 @@
 package com.dmitriy.lesson5;
 
-public class Person {
+import java.util.Comparator;
+
+public class Person implements Comparable<Person>{
 
     private final String name;
     private final String surName;
@@ -30,6 +32,36 @@ public class Person {
     public Position getPosition() {
         return position;
     }
+
+    // compare 2 Person objects by name and surname
+    @Override
+    public int compareTo(Person p1){
+        try {if (p1 == null)
+            System.out.println("Input object is null.");} catch (NullPointerException e) {e.printStackTrace();}
+        int comparedAge = p1.getAge();
+        return this.age - comparedAge;
+    }
+
+    public static Comparator<Person> PersonComparator
+            = new Comparator<Person>() {
+
+        public int compare(Person person1, Person person2) {
+
+//            try {if (person1 == null || person2 == null)
+//                System.out.println("One or both of input objects is null: person1 is " + person1.toString() + " person2 is " + person2.toString());}
+//            catch (NullPointerException e)
+//            {e.printStackTrace();}
+
+                String personName1 = person1.getName().toUpperCase();
+                String personName2 = person2.getName().toUpperCase();
+                String personSurName1 = person2.getSurName().toUpperCase();
+                String personSurName2 = person2.getSurName().toUpperCase();
+
+                //ascending order
+                return personName1.compareTo(personName2) + personSurName1.compareTo(personSurName2);
+        }
+
+    };
 
     @Override
     public boolean equals(Object o) {
