@@ -3,11 +3,6 @@ package com.dmitriy.lesson5;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.Random;
-
-import static org.junit.Assert.*;
-
 public class PersonDelegateTest {//Ctrl+Shift+T create test class
 
     @Test
@@ -27,7 +22,7 @@ public class PersonDelegateTest {//Ctrl+Shift+T create test class
 
         //initialize object of class to test
         PersonMergeHelperImpl personMergeHelper = new PersonMergeHelperImpl();
-        PersonDelegate delegate = new PersonDelegate(personMergeHelper);
+        PersonMergeHelperDelegate delegate = new PersonMergeHelperDelegate(personMergeHelper);
 
         //invoke method on class to test
         Person [] resultArray = delegate.merge(firstArray, secondArray);

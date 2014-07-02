@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
 
         PersonMergeHelperImpl personMergeHelper = new PersonMergeHelperImpl();
-        PersonDelegate delegate = new PersonDelegate(personMergeHelper);
+        PersonMergeHelperDelegate delegate = new PersonMergeHelperDelegate(personMergeHelper);
 
         Person person1 = new Person.PersonBuilder().surName("Dudov").name("John").position(Position.BA).age(33).build();
         Person person2 = new Person.PersonBuilder().position(Position.DEVELOPER).age(42).surName("Floyd").name("Dick").build();

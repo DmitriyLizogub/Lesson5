@@ -3,11 +3,11 @@ package com.dmitriy.lesson5;
 /**
  * Created by dmitriy on 7/1/14.
  */
-public class PersonDelegate {
+public class PersonMergeHelperDelegate {
 
     private final PersonMergeHelperImpl personResourse;
 
-    public PersonDelegate(PersonMergeHelperImpl personResourse){
+    public PersonMergeHelperDelegate(PersonMergeHelperImpl personResourse){
         this.personResourse = personResourse;
     }
 
