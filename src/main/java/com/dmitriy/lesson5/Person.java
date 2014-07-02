@@ -37,9 +37,6 @@ public class Person implements Comparable<Person>{
     // compare 2 Person objects by name and surname
     @Override
     public int compareTo(Person p1){
-        try {if (p1 == null)
-            System.out.println("Input object is null.");
-        return -500;} catch (NullPointerException e) {e.printStackTrace();}
         int comparedAge = p1.getAge();
         //ascending order
         return  this.age-comparedAge;
