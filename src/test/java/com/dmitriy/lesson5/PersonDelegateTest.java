@@ -16,7 +16,7 @@ public class PersonDelegateTest {//Ctrl+Shift+T create test class
 
         Person[] firstArray = new Person[]{person1,person2,person3};
         Person[] secondArray = new Person[]{person1,person4,person2};
-        Person[] expectedArray = {};
+        Person[] expectedArray = {person4,person3,person1,person2};
 
         //initialize mocks
 
@@ -28,7 +28,7 @@ public class PersonDelegateTest {//Ctrl+Shift+T create test class
         Person [] resultArray = delegate.merge(firstArray, secondArray);
 
         //assertion block
-        Assert.assertArrayEquals("When left array is empty the method leftUnion() doesn't work right.", expectedArray, resultArray);
+        Assert.assertArrayEquals("Person [] merge() method doesn't work right with positive case.", expectedArray, resultArray);
 
         //verify mocks expectations
     }
