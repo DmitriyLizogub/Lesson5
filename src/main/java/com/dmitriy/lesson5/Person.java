@@ -1,6 +1,7 @@
 package com.dmitriy.lesson5;
 
 import java.util.Comparator;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Person implements Comparable<Person>{
 
@@ -37,9 +38,11 @@ public class Person implements Comparable<Person>{
     @Override
     public int compareTo(Person p1){
         try {if (p1 == null)
-            System.out.println("Input object is null.");} catch (NullPointerException e) {e.printStackTrace();}
+            System.out.println("Input object is null.");
+        return -500;} catch (NullPointerException e) {e.printStackTrace();}
         int comparedAge = p1.getAge();
-        return this.age - comparedAge;
+        //ascending order
+        return  this.age-comparedAge;
     }
 
     public static Comparator<Person> PersonComparator
@@ -47,21 +50,19 @@ public class Person implements Comparable<Person>{
 
         public int compare(Person person1, Person person2) {
 
-//            try {if (person1 == null || person2 == null)
-//                System.out.println("One or both of input objects is null: person1 is " + person1.toString() + " person2 is " + person2.toString());}
-//            catch (NullPointerException e)
-//            {e.printStackTrace();}
-
+                if (person1 != null && person2 != null){
                 String personName1 = person1.getName().toUpperCase();
                 String personName2 = person2.getName().toUpperCase();
                 String personSurName1 = person2.getSurName().toUpperCase();
                 String personSurName2 = person2.getSurName().toUpperCase();
 
                 //ascending order
-                return personName1.compareTo(personName2) + personSurName1.compareTo(personSurName2);
+                return personName2.compareTo(personName1) + personSurName2.compareTo(personSurName1);
+                } else return -1;
         }
 
     };
+
 
     @Override
     public boolean equals(Object o) {

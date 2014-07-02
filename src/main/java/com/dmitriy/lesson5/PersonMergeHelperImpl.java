@@ -8,26 +8,26 @@ import java.util.Arrays;
 public class PersonMergeHelperImpl implements PersonMargeHelper {
 
     @Override
-    public Person[] merge(Person[] firstArray, Person[] secondArray){
+    public Person[] merge(Person[] firstArray, Person[] secondArray) {
 
         int resultLength = firstArray.length + secondArray.length;
-        Person[] resultArray = Arrays.copyOf(firstArray,resultLength);
+        Person[] resultArray = Arrays.copyOf(firstArray, resultLength);
 
-        for(int i = firstArray.length; i<resultArray.length; i++){
-            resultArray[i] = secondArray[i-firstArray.length];
+        for (int i = firstArray.length; i < resultArray.length; i++) {
+            resultArray[i] = secondArray[i - firstArray.length];
         }
 
-            Arrays.sort(resultArray, Person.PersonComparator);
-
+        Arrays.sort(resultArray, Person.PersonComparator);
 
         setDuplicatesInArrayToNull(resultArray);
+        Arrays.sort(resultArray, Person.PersonComparator);
 
         int resultArrayLength = resultArray.length - countNullInArray(resultArray);
-        Person [] rezArray = new Person[resultArrayLength];
+        Person[] rezArray = new Person[resultArrayLength];
 
-        for (int d = 0; d < resultArray.length; d++){ //TODO
+        for (int d = countNullInArray(resultArray); d < resultArray.length; d++) {
             if (resultArray[d] != null) {
-                    rezArray[d] = resultArray[d];
+                rezArray[d - countNullInArray(resultArray)] = resultArray[d];
 
             }
         }
