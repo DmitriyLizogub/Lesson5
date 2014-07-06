@@ -17,10 +17,12 @@ public class PersonMergeHelperImpl implements PersonMergeHelper {
             resultArray[i] = secondArray[i - firstArray.length];
         }
 
-        Arrays.sort(resultArray, Person.PersonComparator);
+        PersonComparatorByNameOrSurname personComparator = new PersonComparatorByNameOrSurname();
+
+        Arrays.sort(resultArray, personComparator);
 
         setDuplicatesInArrayToNull(resultArray);
-        Arrays.sort(resultArray, Person.PersonComparator);
+        Arrays.sort(resultArray, personComparator);
 
         int resultArrayLength = resultArray.length - countNullInArray(resultArray);
         Person[] rezArray = new Person[resultArrayLength];

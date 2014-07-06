@@ -42,24 +42,6 @@ public class Person implements Comparable<Person>{
         return  this.age-comparedAge;
     }
 
-    public static Comparator<Person> PersonComparator
-            = new Comparator<Person>() {
-
-        public int compare(Person person1, Person person2) {
-
-                if (person1 != null && person2 != null){
-                String personName1 = person1.getName().toUpperCase();
-                String personName2 = person2.getName().toUpperCase();
-                String personSurName1 = person2.getSurName().toUpperCase();
-                String personSurName2 = person2.getSurName().toUpperCase();
-
-                //ascending order
-                return personName2.compareTo(personName1) + personSurName2.compareTo(personSurName1);
-                } else return -1;
-        }
-
-    };
-
 
     @Override
     public boolean equals(Object o) {
